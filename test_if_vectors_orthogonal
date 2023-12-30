@@ -1,0 +1,45 @@
+import numpy as np
+
+
+def test_if_vectors_orthogonal(V):
+    '''
+    given a set of vectors, check if they are all orthogonal to each other
+    zero vectors are ignored
+    if there are more non-zero vectors than the dimension of the vectors, there is a warning and the output is False
+
+    input: V, a 2-D numpy array that contains the test vectors as columns
+    output: True if all the vectors are orthogonal to each other
+    False if the input is valid, but not all the vectors are orthogonal to each other
+    None if input is invalid and didn't pass the validation checks
+    '''
+
+    dimensionV, numVectors = V.shape
+    all_orthogonal = False
+
+    V_zero_columns = np.all(V == 0, axis=0)
+    if np.any(V_zero_columns):
+        V = V[:, ~V_zero_columns]
+        print('Warning, the 0 vector(s) were ignored.')
+        numVectors = V.shape[1]
+
+    if numVectors == 0:
+        print('Either V is an empty array,')
+        print('or after ignoring the 0 vector(s), there are no vectors left to work with.')
+        return
+
+    if numVectors == 1:
+        print('There is only one vector in the input.')
+        return
+
+    if numVectors > dimensionV:
+        print('It\'s not possible to have more than {} vectors in a {}-dimensional space '
+              'all orthogonal to each other.'.format(dimensionV, dimensionV))
+        return
+
+    for j in range(numVectors - 1):
+        for other_j in range(j+1, numVectors):
+            all_orthogonal = np.dot(V[:, j], V[:, other_j]) == 0
+            if not all_orthogonal:
+                return all_orthogonal
+
+    return all_orthogonal
