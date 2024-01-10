@@ -1,0 +1,111 @@
+from datetime import date
+
+
+class Dog:
+    """
+    A class to represent a dog.
+
+    Attributes
+    ----------
+
+    name : str
+        a dog's name
+    birth_date : a datetime date object of the format date(YYYY, MM, DD)
+        for example date(2023, 12, 31) for December 31st, 2023
+        a dog's date of birth
+    weight : float
+        a dog's weight in kg
+    color: str
+        the main color of the dogs coat or multicolor
+    wellness_status : dict
+        a dictionary that represents various aspects of the dog's well-being
+        wellness_status = {health_status: 'excellent',
+                            food_status: 'ok',
+                            water_status: 'ok',
+                            energy_level: 'playful',
+                            walk_status: 'want to go for a walk'}
+    personality_type : str
+        a dog's personality type, ex: active, outdoorsy, shy, social, curious, guard-dog
+    num_toys: int
+        number of toys that the dog has
+
+    Methods
+    ----------
+
+    __str__:
+        returns a string that describes the current instance of the Dog class in a user-friendly way
+        prints the dogs name, age, color and personality type
+    __repr__:
+        returns a string that allows us to re-create the current object
+    age:
+        calculates a dog's age
+    bark:
+        prints out the dog's barking
+    drink
+    eat
+    get_wellness_status:
+        prints out the dogs wellness status in a friendly format
+        summarizes if everything is ok or gives warnings and lists required actions
+    get_in_car
+    go_for_walk:
+        prints the dog's name and personality type and how they go for a walk according to the dog's personality
+    greet
+    play
+    run
+    sleep:
+        print: Dog <name> is sleeping. Zzzzzzzz ...
+    wag_tail
+        print the dog's name and personality type and how it wags their tail according to personality
+    """
+
+    def __init__(self, name, birth_date, weight, color, wellness_status, personality_type, num_toys):
+        self.name = name
+        self.birth_date = birth_date
+        self.weight = weight
+        self.color = color
+        self.wellness_status = wellness_status
+        self.personality_type = personality_type
+        self.num_toys = num_toys
+
+    def __str__(self):
+        return f"Dog {self.name} is {self.get_age():2.3f} years old, {self.color} and {self.personality_type}."
+
+    def __repr__(self):
+        return (
+            f"{type(self).__name__}("
+            f"name='{self.name}', "
+            f"birth_date=date({self.birth_date.strftime('%Y,%-m,%-d')}), "
+            f"weight={self.weight}, "
+            f"color='{self.color}', "
+            f"wellness_status='{self.wellness_status}', "
+            f"personality_type='{self.personality_type}', "
+            f"num_toys={self.num_toys})"
+        )
+
+    def bark(self):
+        print('Woof Woof!')
+
+    def wag_tail(self):
+        print(f'The {self.personality_type} dog {self.name} is wagging their tail.')
+
+    def get_age(self):
+        """
+        Calculates the dog's age using the birth_date attribute and today's date.
+
+        Parameters
+        ----------
+        no parameters are required
+        only the dog object and today's date is used to calculate the dog's age
+
+        Returns
+        ----------
+        age: float
+        dog's age
+        """
+
+        date_diff = (date.today() - self.birth_date).days
+        age = date_diff // 365 + (date_diff % 365) / 365
+        return age
+
+    def get_wellness_status(self):
+        print(f'Dog {self.name} is {self.wellness_status}.')
