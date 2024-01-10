@@ -9,7 +9,6 @@ Clifford = p.Dog('Clifford', date(1963, 1, 1), 100, 'red',
                  'all_good', 'social', 100)
 
 
-# Press the green button in the gutter to run the script.
 if __name__ == '__main__':
     print('Welcome to PetsOOP - the Python Object Oriented programming practice!\n')
 
