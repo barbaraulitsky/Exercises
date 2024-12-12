@@ -41,7 +41,8 @@ class Dog:
         calculates a dog's age
     bark:
         prints out the dog's barking
-    drink
+    drink:
+        prints out the dog's drinking (water)
     eat
     get_wellness_status:
         prints out the dogs wellness status in a friendly format
@@ -84,6 +85,9 @@ class Dog:
 
     def bark(self):
         print('Woof Woof!')
+
+    def drink(self):
+        print('Slurp Slurp')
 
     def wag_tail(self):
         print(f'The {self.personality_type} dog {self.name} is wagging their tail.')
