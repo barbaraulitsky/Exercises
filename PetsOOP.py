@@ -38,7 +38,7 @@ class Dog:
     __repr__:
         returns a string that allows us to re-create the current object
     age:
-        calculates a dog's age
+        calculates and prints a dog's age in years
     bark:
         prints out the dog's barking
     drink:
@@ -69,7 +69,7 @@ class Dog:
         self.num_toys = num_toys
 
     def __str__(self):
-        return f"Dog {self.name} is {self.get_age():2.3f} years old, {self.color} and {self.personality_type}."
+        return f"Dog {self.name} is {self.get_age()} years old, {self.color} and {self.personality_type}."
 
     def __repr__(self):
         return (
@@ -103,12 +103,17 @@ class Dog:
 
         Returns
         ----------
-        age: float
+        age: int
         dog's age
         """
 
-        date_diff = (date.today() - self.birth_date).days
-        age = date_diff // 365 + (date_diff % 365) / 365
+        birth_date = self.birth_date
+        today = date.today()
+        age = today.year - birth_date.year
+        # adjust if the birthday has not occurred this year yet
+        if (today.month, today.day) < (birth_date.month, birth_date.day):
+            age -= 1
+
         return age
 
     def get_wellness_status(self):
