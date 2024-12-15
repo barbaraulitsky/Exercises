@@ -38,7 +38,7 @@ class Dog:
     __repr__:
         returns a string that allows us to re-create the current object
     age:
-        calculates and prints a dog's age in years
+        calculates a dog's age in years
     bark:
         prints out the dog's barking
     drink:
