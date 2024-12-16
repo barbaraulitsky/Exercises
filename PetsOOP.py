@@ -37,8 +37,8 @@ class Dog:
         prints the dogs name, age, color and personality type
     __repr__:
         returns a string that allows us to re-create the current object
-    age:
-        calculates a dog's age in years
+    get_age:
+        calculates a dog's age in years (integer)
     bark:
         prints out the dog's barking
     drink:
