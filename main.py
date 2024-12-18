@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime, date
 import PetsOOP as p
 
 
@@ -13,6 +13,9 @@ if __name__ == '__main__':
     print('Welcome to PetsOOP - the Python Object Oriented programming practice!\n')
 
 print(Spot)
+Spot.birth_date = date(2022, 1, 31)
+print(Spot)
+print(Spot.birth_date)
 Spot.bark()
 print(Clifford)
 print(repr(Clifford))
