@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime, date
 
 
 class Dog:
@@ -68,8 +68,22 @@ class Dog:
         self.personality_type = personality_type
         self.num_toys = num_toys
 
+    @property
+    def birth_date(self):
+        """getter method for birth_date"""
+        return self._birth_date
+
+    @birth_date.setter
+    def birth_date(self, value):
+        """setter method for birth_date, validates input"""
+        # if type(value) is not datetime.date:  # also tried not isinstance(value, date)
+        #     raise TypeError('Dogs birthdate must be of type datetime.date ex. date(2020, 1, 31)')
+        self._birth_date = value
+
     def __str__(self):
+        # return f"Dog {self.name} {self._birth_date} {self.get_age()}"
         return f"Dog {self.name} is {self.get_age()} years old, {self.color} and {self.personality_type}."
+        # return f"Dog {self.name} is {self.color} and {self.personality_type}."
 
     def __repr__(self):
         return (
@@ -107,7 +121,7 @@ class Dog:
         dog's age
         """
 
-        birth_date = self.birth_date
+        birth_date = self._birth_date
         today = date.today()
         age = today.year - birth_date.year
         # adjust if the birthday has not occurred this year yet
