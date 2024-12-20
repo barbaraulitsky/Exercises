@@ -1,4 +1,4 @@
-from datetime import datetime, date
+from datetime import date
 
 
 class Dog:
@@ -76,8 +76,8 @@ class Dog:
     @birth_date.setter
     def birth_date(self, value):
         """setter method for birth_date, validates input"""
-        # if type(value) is not datetime.date:  # also tried not isinstance(value, date)
-        #     raise TypeError('Dogs birthdate must be of type datetime.date ex. date(2020, 1, 31)')
+        if type(value) is not date:  # also tried: not isinstance(value, date)
+            raise TypeError('Dogs birthdate must be of type datetime.date ex. date(2020, 1, 31)')
         self._birth_date = value
 
     def __str__(self):
