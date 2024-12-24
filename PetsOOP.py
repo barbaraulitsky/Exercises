@@ -1,4 +1,5 @@
 from datetime import date
+import random
 
 
 class Dog:
@@ -59,7 +60,13 @@ class Dog:
         print the dog's name and personality type and how it wags their tail according to personality
     """
 
-    def __init__(self, name, birth_date, weight, color, wellness_status, personality_type, num_toys):
+    default_dog_names = ['Luna', 'Rainbow', 'Buddy', 'Fetchington', 'Barkley', 'Zippy', 'Dreamer',
+                         'Snugglebug', 'Peppy', 'Chillington', 'Philosopher', 'Patches']
+    default_name = random.choice(default_dog_names)
+
+    def __init__(self, name=default_name, birth_date=date.today(), weight=1, color='multicolor',
+                 wellness_status='all_good', personality_type='friendly', num_toys=1):
+
         self.name = name
         self.birth_date = birth_date
         self.weight = weight
